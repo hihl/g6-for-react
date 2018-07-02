@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+node_modules
+coverage
+npm-debug.log
+*.orig
+.vscode/*
+test/*
+doc/*
+pages/*
+demo/*
+testDemo/*
+plugin/*

@@ -1,0 +1,53 @@
+{
+  "extends": "standard",
+  "parser": "babel-eslint",
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  },
+  "globals": {
+    "it": true,
+    "describe": true,
+    "require": true,
+    "process": true,
+    "before": true,
+    "after" : true,
+    "sinon": true,
+    "expect" : true,
+    "beforeEach": true,
+    "afterEach": true
+  },
+  "env":{
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "quotes": "off",
+    "no-mixed-operators": 0,
+    "no-undef": 0,
+    "func-names": 0,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/sort-comp": 0,
+    "react/prop-types": 0,
+    "react/jsx-first-prop-new-line": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".md"] }],
+    "array-bracket-spacing": [2, "never"],
+    "comma-dangle": [2, "never"],
+    "comma-spacing": [2, { "before": false, "after": true }],
+    "computed-property-spacing": [2, "never"],
+    "constructor-super": 0,
+    "default-case": 2,
+    "eol-last": 2,
+    "arrow-parens": 0,
+    "generator-star-spacing": 0,
+    "semi": 0,
+    "space-before-function-paren": 0
+  }
+}
