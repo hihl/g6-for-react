@@ -21,7 +21,7 @@ export default class PureGraph extends React.Component {
     updateElement: PropTypes.func,
     deleteElement: PropTypes.func,
     createId: PropTypes.func,
-    getParentInfo: PropTypes.func,
+    getParentInfo: PropTypes.func
   };
 
   constructor(props) {
@@ -38,7 +38,7 @@ export default class PureGraph extends React.Component {
       updateElement: this.updateElement,
       deleteElement: this.deleteElement,
       createId: this.createId,
-      getParentInfo: this.getParentInfo,
+      getParentInfo: this.getParentInfo
     };
   }
 
@@ -48,7 +48,7 @@ export default class PureGraph extends React.Component {
       this.id,
       {
         ...this.props,
-        container: this.containerWrap,
+        container: this.containerWrap
       }
     );
     this.graph = this.g6Processor.createG6Instance();
@@ -61,7 +61,7 @@ export default class PureGraph extends React.Component {
       this.id,
       {
         ...this.props,
-        container: this.containerWrap,
+        container: this.containerWrap
       }
     );
     const newGraph = this.g6Processor.batchedUpdate();
@@ -72,7 +72,7 @@ export default class PureGraph extends React.Component {
   }
 
   componentWillUnmount() {
-    this.g6Processor.destory();
+    this.g6Processor.destroy();
     this.graph = null;
     this.containerWrap = null;
   }
@@ -89,7 +89,7 @@ export default class PureGraph extends React.Component {
   getParentInfo = () => {
     return {
       id: this.id,
-      name: this.name,
+      name: this.name
     };
   }
 

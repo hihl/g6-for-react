@@ -55,7 +55,7 @@ export default class Processor {
     this.calUpdateFlag(name, id);
   }
 
-  destory() {
+  destroy() {
     this.instance.destroy();
     this.instance = null;
   }
