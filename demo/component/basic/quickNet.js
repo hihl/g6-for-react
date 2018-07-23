@@ -30,24 +30,11 @@ export default class QuickNet extends React.Component {
 
   render() {
     return (
-      <Graph {...this.state}></Graph>
+      <div className="graph">
+        <div className="graph-basic">
+          <Graph {...this.state}></Graph>
+        </div>
+      </div>
     );
-  }
-
-  componentDidMount() {
-    const data = this.state.data;
-    setTimeout(() => {
-      this.setState({
-        data: {
-          nodes: [{
-            id: 'node1',
-            x: 200,
-            y: 150,
-            parent: 'group1',
-            label: '节点1'
-          }]
-        }
-      });
-    }, 800);
   }
 }

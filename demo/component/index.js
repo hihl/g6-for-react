@@ -1,7 +1,5 @@
-import BasicGraph from './basic';
+import basic from './basic';
 
 export default {
-  graph: {
-    BasicGraph
-  }
+  ...basic
 };

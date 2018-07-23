@@ -27,7 +27,11 @@ export default class BasicAnimate extends React.Component {
 
   render() {
     return (
-      <Graph {...this.state}></Graph>
+      <div className="graph">
+        <div className="graph-basic">
+          <Graph {...this.state}></Graph>
+        </div>
+      </div>
     );
   }
 
