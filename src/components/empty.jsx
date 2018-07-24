@@ -14,18 +14,18 @@ export default class Empty extends (React.PureComponent || React.Component) {
   static propTypes = {
     width: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.number,
+      PropTypes.number
     ]),
     height: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.number,
+      PropTypes.number
     ]),
-    placeholder: PropTypes.node,
+    placeholder: PropTypes.node
   };
 
   static defaultProps = {
     width: '100%',
-    placeholder: <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>,
+    placeholder: <div style={{ position: 'relative', top: '48%', textAlign: 'center' }}>暂无数据</div>
   };
 
   render() {

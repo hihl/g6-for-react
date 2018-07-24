@@ -1,7 +1,7 @@
-// import { Util } from '../shared';
-
 const reExecuteDeleteElements = {
-  Node: true,
+  NodeMapping: true,
+  EdgeMapping: true,
+  GroupMapping: true,
   Group: true,
   Plugin: true
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Graph } from 'react-g6';
 
-export default class QuickNet extends React.Component {
+export default class DefaultNode extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,14 +10,17 @@ export default class QuickNet extends React.Component {
           id: 'node1',
           x: 100,
           y: 200,
+          size: 40,
           label: '节点1'
         }, {
           id: 'node2',
           x: 300,
           y: 200,
+          color: '#eb2f96',
           label: '节点2'
         }],
         edges: [{
+          id: 'edge1',
           target: 'node2',
           source: 'node1'
         }]

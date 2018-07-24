@@ -1,5 +1,4 @@
 import G6 from '@antv/g6';
-// import { Util } from '../shared';
 
 export default {
   createGraph(config) {
@@ -10,11 +9,17 @@ export default {
   },
 
   executeGraphConfig(graph, config) {
-    // const graphConfig = config.graph;
-    // const props = graph.props;
-  },
-
-  synchronizeG6Add() {
-
+    const nodeMappingCfg = config.nodeMapping;
+    if (nodeMappingCfg) {
+      graph.node(nodeMappingCfg.props);
+    }
+    const edgeMappingCfg = config.edgeMapping;
+    if (edgeMappingCfg) {
+      graph.edge(edgeMappingCfg.props);
+    }
+    const groupMappingCfg = config.groupMapping;
+    if (groupMappingCfg) {
+      graph.group(groupMappingCfg.props);
+    }
   }
 }

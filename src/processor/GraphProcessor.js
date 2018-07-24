@@ -1,48 +1,66 @@
-import BaseProcessor from './BaseProcessor';
 import g6Creator from './g6Creator';
-import g6Update from './g6Update';
-import configMerge from './configMerge';
+import configAdd from './configAdd';
 
-export default class GraphProcessor extends BaseProcessor {
-  createG6Instance() {
+export default class GraphProcessor {
+  constructor() {
+    this.config = {};
+    this.elementInfos = {};
+    this.added = false;
+    this.mounted = false;
+    this.updated = false;
+    this.deleted = false;
+    this.deleteInfos = {};
+    this.instanceType = 'graph';
+  }
+
+  createInstance() {
+    if (this.mounted) {
+      return;
+    }
     const config = this.config;
     const graph = g6Creator.createGraph(config, this.elementInfos);
-
+    g6Creator.executeGraphConfig(graph, config);
     graph.read(config.graph.props.data);
 
     this.instance = graph;
-    this.instanceType = 'graph';
-    this.initedG6 = true;
+    this.mounted = true;
     this.resetStates();
-    return graph;
+    return this.instance;
   }
 
-  batchedUpdate() {
-    if (!this.instance) {
-      return null;
+  destroy() {
+    this.instance.destroy();
+    this.instance = null;
+    this.mounted = false;
+  }
+
+  resetStates() {
+    const elems = this.elementInfos;
+    for (const id in elems) {
+      if (elems[id].updateProps) delete elems[id].updateProps;
+      if (this.deleteInfos[id]) {
+        delete elems[id];
+      }
     }
-    if (g6Update.needRebuildGraph(this.config)) {
-      configMerge.merge(this.config, this.deleteInfos, this.elementInfos, true);
-      this.instance.destroy();
-      this.instance = 'destroy';
-      return this.createG6Instance();
+    this.added = false;
+    this.updated = false;
+    this.deleteInfos = {};
+  }
+
+  addElement(name, id, props, parentInfo) {
+    this.added = true;
+    this.elementInfos[id] = {
+      id,
+      parentInfo,
+      name,
+      props
+    };
+    if (parentInfo && !this.elementInfos[parentInfo.id]) {
+      this.elementInfos[parentInfo.id] = {
+        id: parentInfo.id,
+        name: parentInfo.name
+      };
     }
-
-    if (this.added) {
-      g6Creator.synchronizeG6Add(this.instance, this.config);
-    }
-
-    if (this.updated) {
-      g6Update.synchronizeG6GraphUpdate(this.instance, this.config);
-    }
-
-    // if (this.added || this.deleted || this.updated) {
-    //   this.instance.reRender();
-    // }
-
-    configMerge.mergeUpdate(this.config, false);
-    this.resetStates();
-
-    return this.instance;
+    configAdd.addElement(name, this.config, this.elementInfos[id]);
   }
 }

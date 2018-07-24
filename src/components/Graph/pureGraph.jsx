@@ -51,7 +51,7 @@ export default class PureGraph extends React.Component {
         container: this.containerWrap
       }
     );
-    this.graph = this.g6Processor.createG6Instance();
+    this.graph = this.g6Processor.createInstance();
     this.notifyG6Instance();
   }
 
