@@ -25,5 +25,9 @@ export default {
 
   addGroupMapping(config, elementInfo, id) {
     return this.addUniqueElement(config, 'groupMapping', elementInfo, id);
+  },
+
+  addLayout(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'layout', elementInfo, id);
   }
 }

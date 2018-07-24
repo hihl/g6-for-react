@@ -23,8 +23,8 @@
     "reactjs",
     "chart",
     "react-component",
-    "g2",
-    "BizCharts"
+    "g6",
+    "react-g6"
   ],
   "repository": "https://github.com/hihl/react-g6.git",
   "author": "hihl <348267823@qq.com>",
@@ -49,7 +49,7 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {
-    "@antv/g6": "^2.0.3-beta.1",
+    "@antv/g6": "^2.0.4",
     "invariant": "^2.2.4",
     "prop-types": "^15.6.2",
     "warning": "^4.0.1"

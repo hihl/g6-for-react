@@ -3,7 +3,12 @@ import G6 from '@antv/g6';
 export default {
   createGraph(config) {
     const graphConfig = config.graph;
-    const graph = new G6.Graph(graphConfig.props);
+    const cfg = graphConfig.props;
+    const layoutCfg = config.layout;
+    if (layoutCfg) { // 布局初始化
+      cfg.layout = layoutCfg.props;
+    }
+    const graph = new G6.Graph(cfg);
     graphConfig.g6Instance = graph;
     return graph;
   },
