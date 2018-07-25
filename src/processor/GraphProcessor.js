@@ -1,5 +1,8 @@
 import g6Creator from './g6Creator';
+import g6Update from './g6Update';
 import configAdd from './configAdd';
+import configMerge from './configMerge';
+import _ from 'lodash';
 
 export default class GraphProcessor {
   constructor() {
@@ -62,5 +65,50 @@ export default class GraphProcessor {
       };
     }
     configAdd.addElement(name, this.config, this.elementInfos[id]);
+  }
+
+  calUpdateFlag(name, id) {
+    /* eslint-disable  no-unused-vars */
+    const { children, ...props } = this.elementInfos[id].props;
+    const { children: nextChildren, ...nextProps } = this.elementInfos[id].updateProps;
+    /* eslint-enable */
+    if (name === 'Graph') {
+      const { data, container, ...otherProps } = props;
+      const { data: nextData, container: nextContainer, ...nextOtherProps } = nextProps;
+      if (!_.isEqual(data, nextData) || !_.isEqual(otherProps, nextOtherProps)) {
+        this.updated = true;
+      }
+    } else {
+      if (!_.isEqual(props, nextProps)) {
+        this.updated = true;
+      }
+    }
+  }
+
+  updateElement(name, id, props) {
+    this.elementInfos[id].updateProps = { ...props };
+    this.calUpdateFlag(name, id);
+  }
+
+  batchedUpdate() {
+    if (!this.instance) {
+      return null;
+    }
+
+    if (g6Update.needRebuildGraph(this.config)) {
+      configMerge.merge(this.config, this.deleteInfos, this.elementInfos, true);
+      this.instance.destroy();
+      this.mounted = false;
+      return this.createInstance();
+    }
+
+    if (this.updated) {
+      g6Update.synchronizeG6GraphUpdate(this.instance, this.config);
+    }
+
+    configMerge.mergeUpdate(this.config, false);
+    this.resetStates();
+
+    return this.instance;
   }
 }

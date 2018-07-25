@@ -1,41 +1,57 @@
 import { Util } from '@antv/g6';
 
-/* eslint-disable no-self-compare */
-function is(x, y) {
-  if (x === y) {
-    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+function length(obj) {
+  if (Util.isArray(obj)) {
+    return obj.length;
+  } else if (Util.isObject(obj)) {
+    return Object.keys(obj).length;
   }
-  return x !== x && y !== y; //  NaN == NaN
+
+  return 0;
 }
 
 export default Util.mix({}, Util, {
-  shallowEqual(objA, objB) {
-    if (is(objA, objB)) {
+  shallowEqual(objA, objB, compare, compareContext) {
+    let ret = compare ? compare.call(compareContext, objA, objB) : void 0;
+    if (ret !== void 0) {
+      return !!ret;
+    }
+    if (objA === objB) {
       return true;
     }
-
-    if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+    if (typeof objA === 'function' && typeof objB === 'function') {
+      return objA.toString() === objB.toString();
+    }
+    if (typeof objA !== "object" || !objA || typeof objB !== "object" || !objB) {
       return false;
     }
-
-    if (Util.isArray(objA) !== Util.isArray(objB)) {
+    const keysA = Object.keys(objA);
+    const keysB = Object.keys(objB);
+    if (keysA.length !== keysB.length) {
       return false;
     }
-
-    if (length(objA) !== length(objB)) {
-      return false;
-    }
-
-    let ret = true;
-
-    Util.each(objA, (v, k) => {
-      if (!is(v, objB[k])) {
-        return (ret = false);
+    const bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
+    // Test for A's keys different from B.
+    for (let idx = 0; idx < keysA.length; idx++) {
+      const key = keysA[idx];
+      if (!bHasOwnProperty(key)) {
+        return false;
       }
-      return true;
-    });
-
-    return ret;
+      const valueA = objA[key];
+      const valueB = objB[key];
+      if (typeof valueA === 'function' && typeof valueB === 'function') {
+        ret = valueA.toString() === valueB.toString();
+        if (!ret) {
+          return false;
+        }
+        continue;
+      }
+      ret = compare ? compare.call(compareContext, valueA, valueB, key) : void 0;
+      if (ret === false || (ret === void 0 && valueA !== valueB)) {
+        return false;
+      }
+    }
+    return true;
   },
 
   without(objA, keys = []) {

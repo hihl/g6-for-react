@@ -37,13 +37,15 @@ export default class BasicAnimate extends React.Component {
       });
     }, 800);
     setTimeout(() => {
-      this.graph.update('node1', {
+      this.setState({ data: { nodes: [{
+        id: 'node1',
         x: 200,
-        y: 50
-      });
+        y: 50,
+        label: '节点1'
+      }] } });
     }, 1400);
     setTimeout(() => {
-      this.graph.remove('node1');
+      this.setState({ data: { nodes: [] } });
     }, 2000);
   }
 }

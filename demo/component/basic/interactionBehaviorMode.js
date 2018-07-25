@@ -64,6 +64,13 @@ export default class InteractionBehaviorMode extends React.Component {
     return (
       <div className="graph">
         <div className="graph-basic">
+          <div><button onClick={() => {
+            if (this.state.mode === 'red') {
+              this.setState({ mode: 'green' });
+            } else {
+              this.setState({ mode: 'red' });
+            }
+          }}>切换模式</button></div>
           <Graph 
             fitView="cc" 
             height={window.innerHeight} 

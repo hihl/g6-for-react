@@ -42,6 +42,13 @@ class BaseComponent extends React.Component {
     );
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.context.updateElement(
+      this.name, this.id, nextProps,
+      this.context.getParentInfo()
+    );
+  }
+
   getParentInfo = () => {
     return {
       id: this.id,

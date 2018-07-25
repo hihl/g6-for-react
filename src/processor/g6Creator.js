@@ -14,6 +14,10 @@ export default {
   },
 
   executeGraphConfig(graph, config) {
+    const graphCfg = config.graph;
+    if (graphCfg && graphCfg.style) {
+      graph.css(graphCfg.style);
+    }
     const nodeMappingCfg = config.nodeMapping;
     if (nodeMappingCfg) {
       graph.node(nodeMappingCfg.props);
