@@ -12,7 +12,9 @@ import LayoutBase from './layoutBase';
 import ViewportFocus from './viewportFocus';
 import ViewportZoom from './viewportZoom';
 import ViewportFitView from './viewportFitView';
+import ViewportTranslate from './viewportTranslate';
 import InteractionBehaviorMode from './interactionBehaviorMode';
+import InteractionDragNode from './interactionDragNode';
 import GraphChangeSize from './graphChangeSize';
 import GraphZIndex from './graphZIndex';
 
@@ -20,6 +22,7 @@ export default {
   '基础': {
     '快速上手': QuickNet,
     '交互-模式与行为': InteractionBehaviorMode,
+    '交互-拖拽节点': InteractionDragNode,
     '默认-边': DefaultEdge,
     '默认-群组': DefaultGroup,
     '默认-节点': DefaultNode,
@@ -34,6 +37,7 @@ export default {
     '布局-基础': LayoutBase,
     '视口-聚焦': ViewportFocus,
     '视口-缩放': ViewportZoom,
-    '视口-自适应': ViewportFitView
+    '视口-自适应': ViewportFitView,
+    '视口-平移': ViewportTranslate
   }
 }

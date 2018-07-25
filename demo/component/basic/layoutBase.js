@@ -1,5 +1,6 @@
 import React from 'react';
 import { Graph, Layout, G6 } from 'react-g6';
+require('@antv/g6/build/plugin.util.randomData');
 
 const Util = G6.Util;
 const data = Util.createChainData(50);

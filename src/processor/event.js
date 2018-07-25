@@ -47,12 +47,12 @@ itemsEvtNamePrefix.forEach((prefix, i) => {
 });
 
 const baseEvents = baseEventNames.map(eventName => ({
-  props: `on${_.capitalize(eventName)}`,
+  prop: `on${_.capitalize(eventName)}`,
   event: eventName
 }));
 
 const graphEvents = graphEventNames.map(eventName => ({
-  props: `on${_.capitalize(eventName)}`,
+  prop: `on${_.capitalize(eventName)}`,
   event: eventName
 })).concat(baseEvents).concat(itemEvents);
 

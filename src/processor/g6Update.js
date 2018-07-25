@@ -11,7 +11,10 @@ export default {
     const nextGraphProps = config.graph.updateProps;
     if (
       !_.isEqual(graphProps.fitViewPadding, nextGraphProps.fitViewPadding) ||
+      !_.isEqual(graphProps.minZoom, nextGraphProps.minZoom) ||
+      !_.isEqual(graphProps.maxZoom, nextGraphProps.maxZoom) ||
       !_.isEqual(graphProps.modes, nextGraphProps.modes) ||
+      !_.isEqual(graphProps.plugins, nextGraphProps.plugins) ||
       config.nodeMapping && !Util.shallowEqual(config.nodeMapping.props, config.nodeMapping.updateProps) ||
       config.edgeMapping && !Util.shallowEqual(config.edgeMapping.props, config.edgeMapping.updateProps) ||
       config.groupMapping && !Util.shallowEqual(config.groupMapping.props, config.groupMapping.updateProps)

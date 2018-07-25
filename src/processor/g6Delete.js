@@ -15,5 +15,14 @@ export default {
     }
 
     return false;
+  },
+
+  synchronizeG6Delete(chart, config, deleteInfos, elementInfos) {
+    Object.keys(deleteInfos).forEach((id) => {
+      const funName = deleteFuncMap[elementInfos[id].name];
+      if (this[funName] && !elementInfos[id].viewId) {
+        this[funName](chart, config, id);
+      }
+    });
   }
 };
