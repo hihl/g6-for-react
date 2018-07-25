@@ -39,7 +39,7 @@ export default class GraphChangeSize extends React.Component {
             <button onClick={() => this.setState({ width: 350, height: 350 })}>350 * 350</button>
             <button onClick={() => this.setState({ width: 400, height: 400 })}>400 * 400</button>
           </div>
-          <Graph forceFit style={{ border: '1px solid red' }} fitView="cc" animate={true} width={this.state.width} height={this.state.height} data={this.state.data}></Graph>
+          <Graph forceFit={true} style={{ border: '1px solid red' }} fitView="cc" animate={true} width={this.state.width} height={this.state.height} data={this.state.data}></Graph>
         </div>
       </div>
     );

@@ -114,6 +114,10 @@ export default class GraphProcessor {
       configMerge.mergeDelete(this.config, this.deleteInfos, this.elementInfos);
     }
 
+    if (this.updated) {
+      g6Update.synchronizeG6GraphUpdate(this.instance, this.config);
+    }
+
     configMerge.mergeUpdate(this.config, false);
     this.resetStates();
 
