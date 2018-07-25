@@ -1,5 +1,6 @@
 import { Util } from '../shared';
 import _ from 'lodash';
+import EventUtil from './event';
 
 export default {
   needRebuildGraph(config) {
@@ -78,6 +79,8 @@ export default {
     if (!_.isEqual(style, nextStyle)) {
       graph.css(nextStyle);
     }
+
+    EventUtil.updateEvents(graph, EventUtil.graphEvents, props, nextProps);
   },
 
   addGraphItem(graph, type, data, nextData) {

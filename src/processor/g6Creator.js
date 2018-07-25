@@ -1,4 +1,5 @@
 import G6 from '@antv/g6';
+import EventUtil from './event';
 
 export default {
   createGraph(config) {
@@ -29,6 +30,10 @@ export default {
     const groupMappingCfg = config.groupMapping;
     if (groupMappingCfg) {
       graph.group(groupMappingCfg.props);
+    }
+
+    if (graphCfg) {
+      EventUtil.bindEvents(graph, EventUtil.graphEvents, graphCfg.props);
     }
   }
 }

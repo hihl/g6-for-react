@@ -14,6 +14,7 @@ import ViewportZoom from './viewportZoom';
 import ViewportFitView from './viewportFitView';
 import InteractionBehaviorMode from './interactionBehaviorMode';
 import GraphChangeSize from './graphChangeSize';
+import GraphZIndex from './graphZIndex';
 
 export default {
   '基础': {
@@ -24,6 +25,7 @@ export default {
     '默认-节点': DefaultNode,
     '动画': Animate,
     '图-更改画布尺寸': GraphChangeSize,
+    '图-调整图层': GraphZIndex,
     '自定义-锚点': CustomAnchor,
     '自定义-绘制': CustomDraw,
     '自定义-流动效果线条': CustomFlowEdge,
