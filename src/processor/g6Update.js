@@ -15,9 +15,9 @@ export default {
       !_.isEqual(graphProps.maxZoom, nextGraphProps.maxZoom) ||
       !_.isEqual(graphProps.modes, nextGraphProps.modes) ||
       !_.isEqual(graphProps.plugins, nextGraphProps.plugins) ||
-      config.nodeMapping && !Util.shallowEqual(config.nodeMapping.props, config.nodeMapping.updateProps) ||
-      config.edgeMapping && !Util.shallowEqual(config.edgeMapping.props, config.edgeMapping.updateProps) ||
-      config.groupMapping && !Util.shallowEqual(config.groupMapping.props, config.groupMapping.updateProps)
+      config.nodeMapper && !Util.shallowEqual(config.nodeMapper.props, config.nodeMapper.updateProps) ||
+      config.edgeMapper && !Util.shallowEqual(config.edgeMapper.props, config.edgeMapper.updateProps) ||
+      config.groupMapper && !Util.shallowEqual(config.groupMapper.props, config.groupMapper.updateProps)
     ) {
       return true;
     }

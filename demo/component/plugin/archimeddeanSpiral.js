@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, G6, NodeMapping } from 'react-g6';
+import { Graph, G6, NodeMapper } from 'react-g6';
 require('@antv/g6/build/plugin.layout.archimeddeanSpiral');
 require('@antv/g6/build/plugin.util.randomData');
 
@@ -20,7 +20,7 @@ export default class ArchimeddeanSpiral extends React.Component {
       <div className="graph">
         <div className="graph-basic">
           <Graph fitView="cc" animate={true} height={window.innerHeight} data={this.state.data} plugins={[plugin]}>
-            <NodeMapping size={16}/>
+            <NodeMapper size={16}/>
           </Graph>
         </div>
       </div>

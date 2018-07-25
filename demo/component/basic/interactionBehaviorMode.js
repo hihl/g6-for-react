@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, NodeMapping, EdgeMapping, G6 } from 'react-g6';
+import { Graph, NodeMapper, EdgeMapper, G6 } from 'react-g6';
 
 // 注册鼠标进入节点变红的行为
 G6.registerBehaviour('mouseEnterFillRed', function(graph) {
@@ -82,8 +82,8 @@ export default class InteractionBehaviorMode extends React.Component {
             mode={this.state.mode}
             onGetG6Instance={graph => this.graph = graph}
           >
-            <NodeMapping label={model => model.id}/>
-            <EdgeMapping style={() => ({ endArrow: true })}/>
+            <NodeMapper label={model => model.id}/>
+            <EdgeMapper style={() => ({ endArrow: true })}/>
           </Graph>
         </div>
       </div>

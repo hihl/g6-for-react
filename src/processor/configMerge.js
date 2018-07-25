@@ -16,9 +16,9 @@ export default {
   mergeUpdate(config, clear) {
     this.mergeGraph(config, clear);
     this.mergeLayout(config);
-    this.mergeNodeMapping(config);
-    this.mergeEdgeMapping(config);
-    this.mergeGroupMapping(config);
+    this.mergeNodeMapper(config);
+    this.mergeEdgeMapper(config);
+    this.mergeGroupMapper(config);
   },
 
   mergeGraph(config, clear) {
@@ -36,21 +36,42 @@ export default {
     }
   },
 
-  mergeNodeMapping(config) {
-    if (config.nodeMapping && config.nodeMapping.updateProps) {
-      config.nodeMapping.props = config.nodeMapping.updateProps;
+  mergeNodeMapper(config) {
+    if (config.nodeMapper && config.nodeMapper.updateProps) {
+      config.nodeMapper.props = config.nodeMapper.updateProps;
     }
   },
 
-  mergeEdgeMapping(config) {
-    if (config.edgeMapping && config.edgeMapping.updateProps) {
-      config.edgeMapping.props = config.edgeMapping.updateProps;
+  mergeEdgeMapper(config) {
+    if (config.edgeMapper && config.edgeMapper.updateProps) {
+      config.edgeMapper.props = config.edgeMapper.updateProps;
     }
   },
 
-  mergeGroupMapping(config) {
-    if (config.groupMapping && config.groupMapping.updateProps) {
-      config.groupMapping.props = config.groupMapping.updateProps;
+  mergeGroupMapper(config) {
+    if (config.groupMapper && config.groupMapper.updateProps) {
+      config.groupMapper.props = config.groupMapper.updateProps;
     }
+  },
+
+  deleteNodeMapper(config) {
+    if (!config) {
+      return;
+    }
+    delete config.nodeMapper;
+  },
+
+  deleteEdgeMapper(config) {
+    if (!config) {
+      return;
+    }
+    delete config.edgeMapper;
+  },
+
+  deleteGroupMapper(config) {
+    if (!config) {
+      return;
+    }
+    delete config.groupMapper;
   }
 }

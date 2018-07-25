@@ -15,16 +15,16 @@ export default {
     return this.addUniqueElement(config, 'graph', elementInfo, id);
   },
 
-  addNodeMapping(config, elementInfo, id) {
-    return this.addUniqueElement(config, 'nodeMapping', elementInfo, id);
+  addNodeMapper(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'nodeMapper', elementInfo, id);
   },
 
-  addEdgeMapping(config, elementInfo, id) {
-    return this.addUniqueElement(config, 'edgeMapping', elementInfo, id);
+  addEdgeMapper(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'edgeMapper', elementInfo, id);
   },
 
-  addGroupMapping(config, elementInfo, id) {
-    return this.addUniqueElement(config, 'groupMapping', elementInfo, id);
+  addGroupMapper(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'groupMapper', elementInfo, id);
   },
 
   addLayout(config, elementInfo, id) {

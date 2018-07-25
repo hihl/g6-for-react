@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, G6, NodeMapping } from 'react-g6';
+import { Graph, G6, NodeMapper } from 'react-g6';
 
 // 设置右边中点为连接锚点
 G6.registerNode('node2', {
@@ -59,7 +59,7 @@ export default class CustomAnchor extends React.Component {
       <div className="graph">
         <div className="graph-basic">
           <Graph fitView="cc" height={window.innerHeight} data={this.state.data}>
-            <NodeMapping label={model => model.id} shape={model => model.id}/>
+            <NodeMapper label={model => model.id} shape={model => model.id}/>
           </Graph>
         </div>
       </div>

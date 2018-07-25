@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, G6, EdgeMapping } from 'react-g6';
+import { Graph, G6, EdgeMapper } from 'react-g6';
 
 G6.registerEdge('flowingEdge', {
   afterDraw: function afterDraw(item) {
@@ -31,7 +31,8 @@ export default class CustomFlowEdge extends React.Component {
           target: 'node2',
           source: 'node1'
         }]
-      }
+      },
+      flowingEdge: true
     };
   }
 
@@ -40,7 +41,7 @@ export default class CustomFlowEdge extends React.Component {
       <div className="graph">
         <div className="graph-basic">
           <Graph fitView="cc" height={window.innerHeight} data={this.state.data}>
-            <EdgeMapping shape="flowingEdge"/>
+            { this.state.flowingEdge && <EdgeMapper shape="flowingEdge"/> }
           </Graph>
         </div>
       </div>

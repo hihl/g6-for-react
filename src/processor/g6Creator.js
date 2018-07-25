@@ -19,17 +19,17 @@ export default {
     if (graphCfg && graphCfg.style) {
       graph.css(graphCfg.style);
     }
-    const nodeMappingCfg = config.nodeMapping;
-    if (nodeMappingCfg) {
-      graph.node(nodeMappingCfg.props);
+    const nodeMapperCfg = config.nodeMapper;
+    if (nodeMapperCfg) {
+      graph.node(nodeMapperCfg.props);
     }
-    const edgeMappingCfg = config.edgeMapping;
-    if (edgeMappingCfg) {
-      graph.edge(edgeMappingCfg.props);
+    const edgeMapperCfg = config.edgeMapper;
+    if (edgeMapperCfg) {
+      graph.edge(edgeMapperCfg.props);
     }
-    const groupMappingCfg = config.groupMapping;
-    if (groupMappingCfg) {
-      graph.group(groupMappingCfg.props);
+    const groupMapperCfg = config.groupMapper;
+    if (groupMapperCfg) {
+      graph.group(groupMapperCfg.props);
     }
 
     if (graphCfg) {

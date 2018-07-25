@@ -49,6 +49,10 @@ class BaseComponent extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+    this.context.deleteElement(this.name, this.id);
+  }
+
   getParentInfo = () => {
     return {
       id: this.id,

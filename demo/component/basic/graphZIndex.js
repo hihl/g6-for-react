@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, NodeMapping } from 'react-g6';
+import { Graph, NodeMapper } from 'react-g6';
 
 const nodes = [];
 const width = window.innerWidth;
@@ -54,7 +54,7 @@ export default class GraphZIndex extends React.Component {
             onNodeMouseenter={this.onNodeMouseenter}
             onNodeMouseleave={this.onNodeMouseleave}
           >
-            <NodeMapping style={{ fillOpacity: 0.8 }}/>
+            <NodeMapper style={{ fillOpacity: 0.8 }}/>
           </Graph>
         </div>
       </div>

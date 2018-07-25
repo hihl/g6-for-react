@@ -1,5 +1,6 @@
 import g6Creator from './g6Creator';
 import g6Update from './g6Update';
+// import g6Delete from './g6Delete';
 import configAdd from './configAdd';
 import configMerge from './configMerge';
 import _ from 'lodash';
@@ -90,6 +91,13 @@ export default class GraphProcessor {
     this.calUpdateFlag(name, id);
   }
 
+  deleteElement(name, id) {
+    if (!this.instance) return;
+
+    this.deleteInfos[id] = id;
+    this.deleted = true;
+  }
+
   batchedUpdate() {
     if (!this.instance) {
       return null;
@@ -102,8 +110,8 @@ export default class GraphProcessor {
       return this.createInstance();
     }
 
-    if (this.updated) {
-      g6Update.synchronizeG6GraphUpdate(this.instance, this.config);
+    if (this.deleted) {
+      configMerge.mergeDelete(this.config, this.deleteInfos, this.elementInfos);
     }
 
     configMerge.mergeUpdate(this.config, false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, EdgeMapping } from 'react-g6';
+import { Graph, EdgeMapper } from 'react-g6';
 require('@antv/g6/build/plugin.edge.quadraticCurve');
 
 export default class QuadraticCurve extends React.Component {
@@ -34,7 +34,7 @@ export default class QuadraticCurve extends React.Component {
       <div className="graph">
         <div className="graph-basic">
           <Graph fitView="cc" animate={true} height={window.innerHeight} data={this.state.data}>
-            <EdgeMapping style={{ endArrow: true }}/>
+            <EdgeMapper style={{ endArrow: true }}/>
           </Graph>
         </div>
       </div>

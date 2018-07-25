@@ -1,11 +1,11 @@
 import Graph from './Graph';
-import { NodeMapping, EdgeMapping, GroupMapping } from './Mapping';
+import { NodeMapper, EdgeMapper, GroupMapper } from './Mapper';
 import Layout from './Layout';
 
 export {
   Graph,
-  NodeMapping,
-  EdgeMapping,
-  GroupMapping,
+  NodeMapper,
+  EdgeMapper,
+  GroupMapper,
   Layout
 };

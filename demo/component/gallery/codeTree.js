@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, NodeMapping, G6 } from 'react-g6';
+import { Graph, NodeMapper, G6 } from 'react-g6';
 
 const getTreeData = function getTreeData(x1, y1, angle, depth) {
   const nodes = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [];
@@ -47,7 +47,7 @@ export default class CodeTree extends React.Component {
       <div className="graph">
         <div className="graph-basic">
           <Graph fitView="cc" animate={true} height={window.innerHeight} data={this.state.data}>
-            <NodeMapping size={2}/>
+            <NodeMapper size={2}/>
           </Graph>
         </div>
       </div>
