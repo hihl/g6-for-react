@@ -1,23 +1,33 @@
-const iAdd = {
-  addElement(name, config, elemInfo) {
-    this[`add${name}`](config, elemInfo, elemInfo.id, elemInfo.parentInfo);
+export default {
+  addElement(name, config, elementInfo) {
+    this[`add${name}`](config, elementInfo, elementInfo.id, elementInfo.parentInfo);
   },
 
-  getConfigContainer(config) {
-    return config;
-  },
+  addUniqueElement(config, name, elementInfo, id) {
+    const configContainer = config;
 
-  addUniqueElement(config, name, elemInfo, id) {
-    const configContainer = this.getConfigContainer(config);
-
-    configContainer[name] = elemInfo;
+    configContainer[name] = elementInfo;
 
     return id;
   },
 
-  addGraph(config, elemInfo, id) {
-    return this.addUniqueElement(config, 'graph', elemInfo, id, null);
-  }
-};
+  addGraph(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'graph', elementInfo, id);
+  },
 
-export default iAdd;
+  addNodeMapper(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'nodeMapper', elementInfo, id);
+  },
+
+  addEdgeMapper(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'edgeMapper', elementInfo, id);
+  },
+
+  addGroupMapper(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'groupMapper', elementInfo, id);
+  },
+
+  addLayout(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'layout', elementInfo, id);
+  }
+}

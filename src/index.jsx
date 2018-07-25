@@ -8,7 +8,7 @@ const ReactG6 = Util.mix(components, {
   Shape,
   track(enable = false) {
     G6.Global.track(enable);
-  },
+  }
 });
 
 exports.default = ReactG6;

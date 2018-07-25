@@ -1,7 +1,6 @@
-// import warning from 'warning';
 import { Util } from '../shared';
-// import g6Creator from './g6Creator';
 import _ from 'lodash';
+import EventUtil from './event';
 
 export default {
   needRebuildGraph(config) {
@@ -10,8 +9,15 @@ export default {
     }
     const graphProps = config.graph.props;
     const nextGraphProps = config.graph.updateProps;
-
-    if (!Util.shallowEqual(graphProps.fitView, nextGraphProps.fitView) || !Util.shallowEqual(graphProps.fitViewPadding, nextGraphProps.fitViewPadding)
+    if (
+      !_.isEqual(graphProps.fitViewPadding, nextGraphProps.fitViewPadding) ||
+      !_.isEqual(graphProps.minZoom, nextGraphProps.minZoom) ||
+      !_.isEqual(graphProps.maxZoom, nextGraphProps.maxZoom) ||
+      !_.isEqual(graphProps.modes, nextGraphProps.modes) ||
+      !_.isEqual(graphProps.plugins, nextGraphProps.plugins) ||
+      config.nodeMapper && !Util.shallowEqual(config.nodeMapper.props, config.nodeMapper.updateProps) ||
+      config.edgeMapper && !Util.shallowEqual(config.edgeMapper.props, config.edgeMapper.updateProps) ||
+      config.groupMapper && !Util.shallowEqual(config.groupMapper.props, config.groupMapper.updateProps)
     ) {
       return true;
     }
@@ -19,8 +25,9 @@ export default {
     return false;
   },
 
-  synchronizeG6GraphUpdate(graph, graphConfig) {
-    this.updateGraph(graph, graphConfig.graph);
+  synchronizeG6GraphUpdate(graph, config) {
+    this.updateGraph(graph, config.graph);
+    this.updateLayout(graph, config.layout);
   },
 
   updateGraph(graph, graphConfig) {
@@ -29,8 +36,11 @@ export default {
     }
 
     const { props, updateProps: nextProps } = graphConfig;
-    const { width, height, animate, data } = props;
-    const { width: nextWidth, height: nextHeight, animate: nextAnimate, data: nextData } = nextProps;
+    const { width, height, animate, data, mode, fitView, style } = props;
+    const { width: nextWidth, height: nextHeight,
+      animate: nextAnimate, data: nextData, mode: nextMode,
+      fitView: nextFitView, style: nextStyle, forceFit
+    } = nextProps;
 
     // 更新群组
     this.addGraphItem(graph, 'group', data.groups, nextData.groups);
@@ -60,6 +70,20 @@ export default {
     } else if (height !== nextHeight) {
       graph.changeSize(graph.getWidth(), nextHeight);
     }
+
+    if (mode !== nextMode) {
+      graph.changeMode(nextMode);
+    }
+
+    if (forceFit || fitView !== nextFitView) {
+      graph.setFitView(nextFitView);
+    }
+
+    if (!_.isEqual(style, nextStyle)) {
+      graph.css(nextStyle);
+    }
+
+    EventUtil.updateEvents(graph, EventUtil.graphEvents, props, nextProps);
   },
 
   addGraphItem(graph, type, data, nextData) {
@@ -81,5 +105,15 @@ export default {
     paddings.forEach(item => {
       graph.update(item.id, item);
     });
+  },
+
+  updateLayout(graph, layoutConfig) {
+    if (!layoutConfig) {
+      return;
+    }
+    const { props, updateProps: nextProps } = layoutConfig;
+    if (!!nextProps.processer && props.processer !== nextProps.processer && props.processer.toString() !== nextProps.processer.toString()) {
+      graph.changeLayout(layoutConfig.updateProps.processer);
+    }
   }
 }

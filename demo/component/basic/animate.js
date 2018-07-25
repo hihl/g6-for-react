@@ -13,13 +13,7 @@ export default class BasicAnimate extends React.Component {
           id: 'node1',
           x: 100,
           y: 200,
-          label: '节点1',
-          parent: 'group1'
-        }],
-        groups: [{
-          id: 'group1',
-          label: '群组1',
-          collapsed: false
+          label: '节点1'
         }]
       }
     };
@@ -29,67 +23,29 @@ export default class BasicAnimate extends React.Component {
     return (
       <div className="graph">
         <div className="graph-basic">
-          <Graph {...this.state}></Graph>
+          <Graph fitView="cc" animate={true} height={window.innerHeight} data={this.state.data} onGetG6Instance={graph => this.graph = graph}></Graph>
         </div>
       </div>
     );
   }
 
   componentDidMount() {
-    const data = this.state.data;
     setTimeout(() => {
-      this.setState({
-        data: {
-          nodes: [{
-            id: 'node1',
-            x: 200,
-            y: 150,
-            parent: 'group1',
-            label: '节点1'
-          }, {
-            id: 'node2',
-            x: 200,
-            y: 100,
-            parent: 'group1',
-            label: '节点2'
-          }, {
-            id: 'node3',
-            x: 20,
-            y: 100,
-            parent: 'group1',
-            label: '节点3'
-          }],
-          groups: [{
-            id: 'group1',
-            label: '群组1',
-            collapsed: false
-          }]
-        }
+      this.graph.update('node1', {
+        x: 50,
+        y: 50
       });
     }, 800);
     setTimeout(() => {
-      this.setState({
-        data: {
-          nodes: [{
-            id: 'node1',
-            x: 200,
-            y: 50,
-            parent: 'group1',
-            label: '节点1'
-          }, {
-            id: 'node2',
-            x: 20,
-            y: 10,
-            parent: 'group1',
-            label: '节点2'
-          }],
-          groups: [{
-            id: 'group1',
-            label: '群组1',
-            collapsed: false
-          }]
-        }
-      });
+      this.setState({ data: { nodes: [{
+        id: 'node1',
+        x: 200,
+        y: 50,
+        label: '节点1'
+      }] } });
     }, 1400);
+    setTimeout(() => {
+      this.setState({ data: { nodes: [] } });
+    }, 2000);
   }
 }

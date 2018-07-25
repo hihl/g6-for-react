@@ -15,6 +15,10 @@ export default {
 
   mergeUpdate(config, clear) {
     this.mergeGraph(config, clear);
+    this.mergeLayout(config);
+    this.mergeNodeMapper(config);
+    this.mergeEdgeMapper(config);
+    this.mergeGroupMapper(config);
   },
 
   mergeGraph(config, clear) {
@@ -24,5 +28,50 @@ export default {
     if (clear) {
       delete config.graph.g6Instance;
     }
+  },
+
+  mergeLayout(config) {
+    if (config.layout && config.layout.updateProps) {
+      config.layout.props = config.layout.updateProps;
+    }
+  },
+
+  mergeNodeMapper(config) {
+    if (config.nodeMapper && config.nodeMapper.updateProps) {
+      config.nodeMapper.props = config.nodeMapper.updateProps;
+    }
+  },
+
+  mergeEdgeMapper(config) {
+    if (config.edgeMapper && config.edgeMapper.updateProps) {
+      config.edgeMapper.props = config.edgeMapper.updateProps;
+    }
+  },
+
+  mergeGroupMapper(config) {
+    if (config.groupMapper && config.groupMapper.updateProps) {
+      config.groupMapper.props = config.groupMapper.updateProps;
+    }
+  },
+
+  deleteNodeMapper(config) {
+    if (!config) {
+      return;
+    }
+    delete config.nodeMapper;
+  },
+
+  deleteEdgeMapper(config) {
+    if (!config) {
+      return;
+    }
+    delete config.edgeMapper;
+  },
+
+  deleteGroupMapper(config) {
+    if (!config) {
+      return;
+    }
+    delete config.groupMapper;
   }
 }
