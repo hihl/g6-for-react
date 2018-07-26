@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, G6 } from 'react-g6';
+import { Graph, G6 } from 'g6-for-react';
 require('@antv/g6/build/plugin.template.maxSpanningForest');
 
 const Plugin = G6.Plugins["template.maxSpanningForest"];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, NodeMapper, G6 } from 'react-g6';
+import { Graph, NodeMapper, G6 } from 'g6-for-react';
 
 const getTreeData = function getTreeData(x1, y1, angle, depth) {
   const nodes = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, Layout, G6 } from 'react-g6';
+import { Graph, Layout, G6 } from 'g6-for-react';
 require('@antv/g6/build/plugin.util.randomData');
 
 const Util = G6.Util;

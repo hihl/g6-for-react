@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tree } from 'react-g6';
+import { Tree } from 'g6-for-react';
 
 export default class QuickTree extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, G6, NodeMapper } from 'react-g6';
+import { Graph, G6, NodeMapper } from 'g6-for-react';
 
 // 设置右边中点为连接锚点
 G6.registerNode('node2', {

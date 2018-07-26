@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph } from 'react-g6';
+import { Graph } from 'g6-for-react';
 
 const width = window.innerWidth;
 const height = window.innerHeight;

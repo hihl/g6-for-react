@@ -21,7 +21,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      'react-g6': path.join(__dirname, '..', 'src/index.jsx'),
+      'g6-for-react': path.join(__dirname, '..', 'src/index.jsx'),
     },
   },
   module: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, NodeMapper } from 'react-g6';
+import { Graph, NodeMapper } from 'g6-for-react';
 
 const nodes = [];
 const width = window.innerWidth;

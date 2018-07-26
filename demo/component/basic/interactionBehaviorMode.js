@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, NodeMapper, EdgeMapper, G6 } from 'react-g6';
+import { Graph, NodeMapper, EdgeMapper, G6 } from 'g6-for-react';
 
 // 注册鼠标进入节点变红的行为
 G6.registerBehaviour('mouseEnterFillRed', function(graph) {

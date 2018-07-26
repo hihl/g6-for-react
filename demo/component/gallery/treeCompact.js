@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tree, NodeMapper, EdgeMapper, G6 } from 'react-g6';
+import { Tree, NodeMapper, EdgeMapper, G6 } from 'g6-for-react';
 
 G6.registerNode('treeNode', {
   anchor: [[0, 0.5], [1, 0.5]]

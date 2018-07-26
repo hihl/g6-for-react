@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, G6, NodeMapper } from 'react-g6';
+import { Graph, G6, NodeMapper } from 'g6-for-react';
 require('@antv/g6/build/plugin.layout.archimeddeanSpiral');
 require('@antv/g6/build/plugin.util.randomData');
 

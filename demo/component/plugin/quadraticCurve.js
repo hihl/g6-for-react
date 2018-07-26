@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, EdgeMapper } from 'react-g6';
+import { Graph, EdgeMapper } from 'g6-for-react';
 require('@antv/g6/build/plugin.edge.quadraticCurve');
 
 export default class QuadraticCurve extends React.Component {

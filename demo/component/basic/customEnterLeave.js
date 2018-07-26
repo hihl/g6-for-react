@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, G6 } from 'react-g6';
+import { Graph, G6 } from 'g6-for-react';
 
 G6.registerNode('customNode', {
   // 自定义入场动画

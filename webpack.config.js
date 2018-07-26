@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV;
 const config = {
   entry: './src/index.jsx',
   output: {
-    library: 'react-g6',
+    library: 'g6-for-react',
     libraryTarget: 'umd',
   },
   module: {

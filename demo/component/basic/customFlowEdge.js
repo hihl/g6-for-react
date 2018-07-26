@@ -1,5 +1,5 @@
 import React from 'react';
-import { Graph, G6, EdgeMapper } from 'react-g6';
+import { Graph, G6, EdgeMapper } from 'g6-for-react';
 
 G6.registerEdge('flowingEdge', {
   afterDraw: function afterDraw(item) {

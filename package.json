@@ -1,9 +1,9 @@
 {
-  "name": "react-g6",
+  "name": "g6-for-react",
   "version": "0.1.0",
   "description": "data visualization library based G6 and React",
-  "main": "umd/react-g6.js",
-  "browser": "umd/react-g6.js",
+  "main": "umd/g6-for-react.js",
+  "browser": "umd/g6-for-react.js",
   "module": "es6/index.js",
   "jsnext:main": "es6/index.js",
   "types": "typings/index.d.ts",
@@ -24,22 +24,22 @@
     "chart",
     "react-component",
     "g6",
-    "react-g6"
+    "g6-for-react"
   ],
-  "repository": "https://github.com/hihl/react-g6.git",
-  "author": "hihl <348267823@qq.com>",
+  "repository": "https://github.com/hihl/g6-for-react.git",
+  "author": "hiihl <348267823@qq.com>",
   "scripts": {
     "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min",
     "build-cjs": "rimraf lib && babel ./src -d lib --plugins=transform-es2015-modules-commonjs",
     "build-es6": "rimraf es6 && babel ./src -d es6",
-    "build-umd": "cross-env NODE_ENV=development webpack src/index.jsx umd/react-g6.js",
-    "build-min": "cross-env NODE_ENV=production webpack src/index.jsx umd/react-g6.min.js",
+    "build-umd": "cross-env NODE_ENV=development webpack src/index.jsx umd/g6-for-react.js",
+    "build-min": "cross-env NODE_ENV=production webpack src/index.jsx umd/g6-for-react.min.js",
     "demo": "webpack-dev-server --progress --port 3510 --content-base demo --inline --config demo/webpack.config.js",
     "testDemo": "webpack-dev-server --progress --port 9000 --content-base testDemo --inline --config testDemo/webpack.config.js",
     "test": "cross-env NODE_ENV=test karma start test/karma.conf.js",
     "lint": "eslint src",
     "autofix": "eslint src --fix",
-    "bundle-analyse": "cross-env NODE_ENV=analyse webpack src/index.jsx build/react-g6.js"
+    "bundle-analyse": "cross-env NODE_ENV=analyse webpack src/index.jsx build/g6-for-react.js"
   },
   "pre-commit": [
     "lint"

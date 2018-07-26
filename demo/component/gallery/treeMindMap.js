@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tree, NodeMapper, EdgeMapper, G6 } from 'react-g6';
+import { Tree, NodeMapper, EdgeMapper, G6 } from 'g6-for-react';
 
 // 注册脑图节点
 G6.registerNode('mindNode', {
