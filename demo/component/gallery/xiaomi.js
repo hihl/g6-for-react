@@ -69,6 +69,18 @@ export default class XiaoMi extends React.Component {
     }
   };
 
+  onNodeMouseenter = ev => {
+    const item = ev.item;
+    this.graph.toFront(item);
+    item.getLabel().show();
+    this.graph.draw();
+  };
+
+  onNodeMouseleave = ev => {
+    const item = ev.item;
+    this.tryHideLabel(item);
+  };
+
   render() {
     return (
       <div className="graph">
@@ -87,6 +99,8 @@ export default class XiaoMi extends React.Component {
             onDrag={this.onDrag}
             onMouseup={this.resetState}
             onCanvasMouseleave={this.resetState}
+            onNodeMouseenter={this.onNodeMouseenter}
+            onNodeMouseleave={this.onNodeMouseleave}
           >
             <NodeMapper 
               style={model => model.type === 'Company' ? {
