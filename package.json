@@ -1,6 +1,6 @@
 {
   "name": "react-g6",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0",
   "description": "data visualization library based G6 and React",
   "main": "umd/react-g6.js",
   "browser": "umd/react-g6.js",
