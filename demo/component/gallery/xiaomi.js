@@ -149,4 +149,9 @@ export default class XiaoMi extends React.Component {
       this.tryHideLabel(node);
     });
   }
+
+  componentWillUnmount() {
+    this.simulation.stop();
+    this.simulation = null;
+  }
 }
