@@ -45,6 +45,7 @@ export default {
   createTree(config) {
     const treeConfig = config.tree;
     const cfg = treeConfig.props;
+    const layoutCfg = config.layout;
     if (layoutCfg) { // 布局初始化
       cfg.layout = layoutCfg.props;
     }

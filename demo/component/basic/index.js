@@ -1,5 +1,6 @@
 import Animate from './animate';
 import QuickNet from './quickNet';
+import QuickTree from './quickTree';
 import CustomDraw from './customDraw';
 import CustomAnchor from './customAnchor';
 import CustomFlowEdge from './customFlowEdge';
@@ -20,7 +21,8 @@ import GraphZIndex from './graphZIndex';
 
 export default {
   '基础': {
-    '快速上手': QuickNet,
+    '快速上手-网图': QuickNet,
+    '快速上手-树图': QuickTree,
     '交互-模式与行为': InteractionBehaviorMode,
     '交互-拖拽节点': InteractionDragNode,
     '默认-边': DefaultEdge,

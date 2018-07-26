@@ -62,7 +62,7 @@ function bindEvents(graph, EVENTS = {}, props) {
     const fns = props[prop];
 
     if (Util.isFunction(fns)) {
-      graph.on(event, fns);
+      graph.on(event, (...args) => fns(...args.concat([graph])));
     } else if (Util.isObject(fns)) {
       for (const name in fns) {
         if (fns[name] !== undefined) {

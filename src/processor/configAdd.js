@@ -15,6 +15,14 @@ export default {
     return this.addUniqueElement(config, 'graph', elementInfo, id);
   },
 
+  addTree(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'tree', elementInfo, id);
+  },
+
+  addLayout(config, elementInfo, id) {
+    return this.addUniqueElement(config, 'layout', elementInfo, id);
+  },
+
   addNodeMapper(config, elementInfo, id) {
     return this.addUniqueElement(config, 'nodeMapper', elementInfo, id);
   },
