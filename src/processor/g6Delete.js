@@ -1,9 +1,7 @@
 const reExecuteDeleteElements = {
   NodeMapper: true,
   EdgeMapper: true,
-  GroupMapper: true,
-  Group: true,
-  Plugin: true
+  GroupMapper: true
 };
 
 export default {

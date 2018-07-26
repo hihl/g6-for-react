@@ -4,7 +4,7 @@ import configAdd from './configAdd';
 import configMerge from './configMerge';
 import _ from 'lodash';
 
-export default class GraphProcessor {
+export default class TreeProcessor {
   constructor() {
     this.config = {};
     this.elementInfos = {};
@@ -13,7 +13,7 @@ export default class GraphProcessor {
     this.updated = false;
     this.deleted = false;
     this.deleteInfos = {};
-    this.instanceType = 'graph';
+    this.instanceType = 'tree';
   }
 
   createInstance() {
@@ -21,11 +21,11 @@ export default class GraphProcessor {
       return;
     }
     const config = this.config;
-    const graph = g6Creator.createGraph(config, this.elementInfos);
-    g6Creator.executeGraphConfig(graph, config);
-    graph.read(graph.dataSource);
+    const tree = g6Creator.createTree(config, this.elementInfos);
+    g6Creator.executeTreeConfig(tree, config);
+    tree.read(tree.dataSource);
 
-    this.instance = graph;
+    this.instance = tree;
     this.mounted = true;
     this.resetStates();
     return this.instance;
@@ -72,7 +72,7 @@ export default class GraphProcessor {
     const { children, ...props } = this.elementInfos[id].props;
     const { children: nextChildren, ...nextProps } = this.elementInfos[id].updateProps;
     /* eslint-enable */
-    if (name === 'Graph') {
+    if (name === 'Tree') {
       const { data, container, ...otherProps } = props;
       const { data: nextData, container: nextContainer, ...nextOtherProps } = nextProps;
       if (!_.isEqual(data, nextData) || !_.isEqual(otherProps, nextOtherProps)) {
@@ -102,7 +102,7 @@ export default class GraphProcessor {
       return null;
     }
 
-    if (g6Update.needRebuildGraph(this.config)) {
+    if (g6Update.needRebuildTree(this.config)) {
       configMerge.merge(this.config, this.deleteInfos, this.elementInfos, true);
       this.instance.destroy();
       this.mounted = false;
@@ -114,7 +114,7 @@ export default class GraphProcessor {
     }
 
     if (this.updated) {
-      g6Update.synchronizeG6GraphUpdate(this.instance, this.config);
+      g6Update.synchronizeG6TreeUpdate(this.instance, this.config);
     }
 
     configMerge.mergeUpdate(this.config, false);

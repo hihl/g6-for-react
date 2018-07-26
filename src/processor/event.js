@@ -120,6 +120,7 @@ function updateEvents(graph, EVENTS = {}, props, nextProps) {
 export default {
   baseEvents,
   graphEvents,
+  treeEvents: graphEvents.slice(0),
   bindEvents,
   unbindEvents,
   updateEvents

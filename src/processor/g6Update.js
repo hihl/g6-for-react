@@ -107,13 +107,84 @@ export default {
     });
   },
 
-  updateLayout(graph, layoutConfig) {
+  updateLayout(instance, layoutConfig) {
     if (!layoutConfig) {
       return;
     }
     const { props, updateProps: nextProps } = layoutConfig;
     if (!!nextProps.processer && props.processer !== nextProps.processer && props.processer.toString() !== nextProps.processer.toString()) {
-      graph.changeLayout(layoutConfig.updateProps.processer);
+      instance.changeLayout(layoutConfig.updateProps.processer);
     }
+  },
+
+  needRebuildTree(config) {
+    if (!config.tree.props || !config.tree.updateProps) {
+      return false;
+    }
+    const treeProps = config.tree.props;
+    const nextTreeProps = config.tree.updateProps;
+    if (
+      !_.isEqual(treeProps.fitViewPadding, nextTreeProps.fitViewPadding) ||
+      !_.isEqual(treeProps.minZoom, nextTreeProps.minZoom) ||
+      !_.isEqual(treeProps.maxZoom, nextTreeProps.maxZoom) ||
+      !_.isEqual(treeProps.modes, nextTreeProps.modes) ||
+      !_.isEqual(graphProps.plugins, nextTreeProps.plugins) ||
+      config.nodeMapper && !Util.shallowEqual(config.nodeMapper.props, config.nodeMapper.updateProps) ||
+      config.edgeMapper && !Util.shallowEqual(config.edgeMapper.props, config.edgeMapper.updateProps) ||
+      config.groupMapper && !Util.shallowEqual(config.groupMapper.props, config.groupMapper.updateProps)
+    ) {
+      return true;
+    }
+
+    return false;
+  },
+
+  synchronizeG6TreeUpdate(tree, config) {
+    this.updateTree(tree, config.tree);
+    this.updateLayout(tree, config.layout);
+  },
+
+  updateTree(tree, treeConfig) {
+    if (!treeConfig) {
+      return;
+    }
+
+    const { props, updateProps: nextProps } = treeConfig;
+    const { width, height, animate, data, mode, fitView, style } = props;
+    const { width: nextWidth, height: nextHeight,
+      animate: nextAnimate, data: nextData, mode: nextMode,
+      fitView: nextFitView, style: nextStyle, forceFit
+    } = nextProps;
+
+    if (animate !== nextAnimate) {
+      tree.set('animate', nextAnimate);
+    }
+
+    if (width !== nextWidth && height !== nextHeight) {
+      tree.changeSize(nextWidth, nextHeight);
+    } else if (width !== nextWidth) {
+      tree.changeSize(nextWidth, tree.getHeight());
+    } else if (height !== nextHeight) {
+      tree.changeSize(tree.getWidth(), nextHeight);
+    }
+
+    if (mode !== nextMode) {
+      tree.changeMode(nextMode);
+    }
+
+    if (forceFit || fitView !== nextFitView) {
+      tree.setFitView(nextFitView);
+    }
+
+    if (!_.isEqual(style, nextStyle)) {
+      tree.css(nextStyle);
+    }
+
+    if (!_.isEqual(data, nextData)) {
+      tree.source(nextData);
+      tree.reRender();
+    }
+
+    EventUtil.updateEvents(tree, EventUtil.treeEvents, props, nextProps);
   }
 }

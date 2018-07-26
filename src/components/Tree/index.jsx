@@ -1,19 +1,19 @@
 import React from 'react';
 import Empty from '../empty';
-import PureGraph from './pureGraph';
+import PureTree from './pureTree';
 
 function hasSource(source) {
   return !!source && !!source.length;
 }
 
-export default class Graph extends (React.PureComponent || React.Component) {
+export default class Tree extends (React.PureComponent || React.Component) {
   getG6Instance() {
-    return this.graph;
+    return this.tree;
   }
 
   _refCallback = g => {
     if (g) {
-      this.graph = g.getG6Instance();
+      this.tree = g.getG6Instance();
     }
   };
 
@@ -23,7 +23,7 @@ export default class Graph extends (React.PureComponent || React.Component) {
     return (
       <div className={className} style={style}>
         {
-          (hasSource(data) || !placeholder) ? <PureGraph ref={this._refCallback} {...this.props} /> : (
+          (hasSource(data) || !placeholder) ? <PureTree ref={this._refCallback} {...this.props} /> : (
             <Empty
               width={width}
               height={height}
