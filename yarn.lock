@@ -2233,7 +2233,7 @@ d3-zoom@1:
     d3-selection "1"
     d3-transition "1"
 
-d3@^5.4.0:
+d3@^5.4.0, d3@^5.5.0:
   version "5.5.0"
   resolved "http://10.58.10.66:7001/d3/download/d3-5.5.0.tgz#948413b91b988a6597f3e4c3e941d3b530bfee63"
   dependencies:
@@ -7247,6 +7247,10 @@ websocket-extensions@>=0.1.1:
 whatwg-fetch@>=0.10.0:
   version "2.0.4"
   resolved "http://10.58.10.66:7001/whatwg-fetch/download/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
+
+whatwg-fetch@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
 
 which-module@^1.0.0:
   version "1.0.0"
