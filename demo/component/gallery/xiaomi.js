@@ -72,7 +72,7 @@ export default class XiaoMi extends React.Component {
   render() {
     return (
       <div className="graph">
-        <div className="graph-basic">
+        <div className="graph-basic" style={{ background: '#0F141F' }}>
           <Graph
             height={window.innerHeight}
             data={this.state.data}
