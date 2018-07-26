@@ -32,8 +32,8 @@ const graphEventNames = [
   'afterchange'
 ];
 
-const items = ['node', 'edge', 'group', 'guide'];
-const itemsEvtNamePrefix = ['onNode', 'onEdge', 'onGroup', 'onGuide'];
+const items = ['node', 'edge', 'group', 'guide', 'canvas'];
+const itemsEvtNamePrefix = ['onNode', 'onEdge', 'onGroup', 'onGuide', 'onCanvas'];
 
 const itemEvents = [];
 
