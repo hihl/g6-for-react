@@ -24,7 +24,7 @@ export default class GraphProcessor {
     const config = this.config;
     const graph = g6Creator.createGraph(config, this.elementInfos);
     g6Creator.executeGraphConfig(graph, config);
-    graph.read(config.graph.props.data);
+    graph.read(graph.dataSource);
 
     this.instance = graph;
     this.mounted = true;

@@ -1,5 +1,6 @@
 import G6 from '@antv/g6';
 import EventUtil from './event';
+import _ from 'lodash';
 
 export default {
   createGraph(config) {
@@ -10,6 +11,7 @@ export default {
       cfg.layout = layoutCfg.props;
     }
     const graph = new G6.Graph(cfg);
+    graph.dataSource = _.cloneDeep(cfg.data);
     graphConfig.g6Instance = graph;
     return graph;
   },
