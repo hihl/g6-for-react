@@ -55,3 +55,11 @@ const data = {
 ```
 
 ## 文档
+
+### 教程
+- [图表介绍](./doc/tutorial/chart.md)
+
+### API
+- [g6-for-react](./doc/api/index.md)
+- 组件
+  - [Graph](./doc/api/graph.md)
