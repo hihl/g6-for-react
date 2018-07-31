@@ -39,39 +39,122 @@ const layoutCreator = col => nodes => {
 
 ## API
 
-### 1、width
+### 1、data
+
+导入的数据模型，以下健名在 G6 中有特定含义，是保留字段，用户在设置自有数据时应 `避免使用` 。用一下格式传入数据：
+```js
+{
+  nodes:[],
+  edges:[],
+  groups: [],
+  guides: []
+}
+```
+
+### 节点的数据模型
+
+```js
+{
+  id: 'node1',             // id 必须唯一
+  color: '#333',           // 颜色
+  size: 10 || [10, 10],    // 尺寸 || [宽, 高]
+  shape: 'circle',         // 所用图形
+  style: {                 // 关键形样式（优先级高于color）
+    fill: 'red',
+	stroke: 'blue'
+  },
+  label: '文本标签' || {     // 文本标签 || 文本图形配置
+    text: '文本标签',
+	fill: 'green'
+  },
+  parent: 'group1',         // 所属组
+  index: 1,                 // 渲染层级
+}
+```
+
+### 边的数据模型
+
+```js
+{
+  id: 'edge1',           // id 必须唯一
+  source: 'node1',       // 源节点 id
+  target: 'node2',       // 目标节点 id
+  controlPoints: [{      // 控制点
+    x: 10,
+	y: 10
+  }],
+  sourceAnchor: 0,       // 源节点锚点
+  targetAnchor: 2,       // 目标节点锚点
+  color: 'red',          // 颜色
+  size: 3,               // 尺寸
+  shape: 'line',         // 所用图形
+  style: {               // 关键形样式（优先级高于color）
+    fill: 'red',
+	stroke: 'blue'
+  },  
+  label: '文本标签' || {   // 文本标签 || 文本图形配置
+    text: '文本标签',
+	fill: 'green'
+  },
+  parent: 'group1',       // 所属组
+  index: 1,               // 渲染层级
+}
+```
+
+### 群组的数据模型
+
+```js
+{
+  id: 'group1',             // id 必须唯一
+  color: '#333',           // 颜色
+  size: 10 || [10, 10],    // 尺寸 || [宽, 高]
+  shape: 'circle',         // 所用图形
+  style: {                 // 关键形样式（优先级高于color）
+    fill: 'red',
+	stroke: 'blue'
+  },
+  label: '文本标签' || {     // 文本标签 || 文本图形配置
+    text: '文本标签',
+	fill: 'green'
+  },
+  parent: 'group2',         // 所属组
+  index: 1,                 // 渲染层级
+}
+```
+
+### 2、width
 画布宽，单位像素 {number}
 `不设置则自适应父容器宽`
 
-### 2、height
+### 3、height
 画布高，单位像素 {number}
 `不设置则自适应父容器高`
 
-### 3、fitView
+### 4、fitView
 初始化视口区域 {string}，候选值为： 'tl', 'lc', 'bl', 'cc', 'tc', 'tr', 'rc', 'br', 'bc', 'autoZoom'
 
-### 4、fitViewPadding
+### 5、fitViewPadding
 视口适应画布边距 {number || array}
 
-### 5、animate
+### 6、animate
 是否开启动画 {boolean}
 
-### 6、minZoom
+### 7、minZoom
 最小缩放倍率 {number}
 
-### 7、maxZoom
+### 8、maxZoom
 最大缩放倍率 {number}
 
-### 8、modes
+### 9、modes
 模式集 {object}
 
-### 9、mode
+### 10、mode
 当前模式 {string}
 
-### 10、plugins
+### 11、plugins
 插件集 {array}
 
-### 11、layout
+### 12、layout
 布局参数 {object|function|object}
 
 <font color="#bd4147" size=2>type</font> {object}
@@ -86,9 +169,10 @@ const layoutCreator = col => nodes => {
 <font color="#bd4147" size=2>type</font> {function}
 
 ```js
-(nodes, edges)=>{
+(nodes, edges, graph)=>{
   // nodes 节点集
   // edges 边集
+  // graph 当前图类实例
   // 在此处进行布局
 }
 ```
@@ -105,7 +189,7 @@ const layoutCreator = col => nodes => {
 }
 ```
 
-### 12、style
+### 13、style
 设置图表最外层div的样式
 ``` jsx
 const style={fontSize: '12'}
