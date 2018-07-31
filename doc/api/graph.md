@@ -41,11 +41,11 @@ const layoutCreator = col => nodes => {
 
 ### 1、width
 画布宽，单位像素 {number}
-<font color="#bd4147" size=2>不设置则自适应父容器宽</font>
+`不设置则自适应父容器宽`
 
 ### 2、height
 画布高，单位像素 {number}
-<font color="#bd4147" size=2>不设置则自适应父容器高</font>
+`不设置则自适应父容器高`
 
 ### 3、fitView
 初始化视口区域 {string}，候选值为： 'tl', 'lc', 'bl', 'cc', 'tc', 'tr', 'rc', 'br', 'bc', 'autoZoom'
