@@ -33,9 +33,9 @@ const config = {
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
       include: [
-        path.resolve(__dirname, 'src')
+        path.resolve(__dirname, 'src'),
+        path.resolve(__dirname, 'plugins')
       ],
       loader: 'babel-loader',
       query: {
@@ -64,6 +64,12 @@ const config = {
       amd: 'prop-types',
       root: 'PropTypes',
     },
+    'g6-for-react': {
+      root: 'ReactG6',
+      commonjs2: 'g6-for-react',
+      commonjs: 'g6-for-react',
+      amd: 'g6-for-react'
+    }
   },
 
   plugins: [
