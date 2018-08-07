@@ -12,8 +12,7 @@ const port = process.env.port || 3005; // 默认端口
 
 function renderPreview(group, page) {
   const preview = previews[group][page];
-  return `
-<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
