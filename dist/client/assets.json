@@ -1,0 +1,25 @@
+{
+  "demo": {
+    "css": "/demo.014959d9d8de621761dc.css",
+    "js": "/demo.014959d9d8de621761dc.js"
+  },
+  "home": {
+    "css": "/home.014959d9d8de621761dc.css",
+    "js": "/home.014959d9d8de621761dc.js"
+  },
+  "": {
+    "eot": "/fonts/tdicon.eot",
+    "ttf": "/fonts/tdicon.ttf",
+    "svg": "/fonts/tdicon.svg",
+    "json": [
+      "/e5579dc2b4c627f45aca.hot-update.json",
+      "/7e3c09dbaea5fa65f8df.hot-update.json"
+    ],
+    "js": [
+      "/dll/vendor2.js",
+      "/dll/vendor1.js",
+      "/../../public/scripts/g6-for-react.min.js",
+      "/../../public/scripts/g6-for-react.js"
+    ]
+  }
+}

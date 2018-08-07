@@ -2,21 +2,40 @@ const path = require('path');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const resolve = require('path').resolve;
+const shelljs = require('shelljs');
 
 const env = process.env.NODE_ENV;
 
+const entry = {
+  ReactG6: './src/index.jsx',
+  G6Plugins: './src/plugins.js'
+};
+
+shelljs.ls(resolve(__dirname, 'plugins')).forEach(pluginPath => {
+  if (pluginPath !== 'index.js') {
+    const moduleName = 'plugin.' + pluginPath;
+    entry[moduleName] = `./plugins/${pluginPath}/index.js`;
+  } else {
+    const moduleName = 'plugins';
+    entry[moduleName] = './plugins/index.js';
+  }
+});
+
 const config = {
-  entry: './src/index.jsx',
+  entry,
   output: {
-    library: 'g6-for-react',
+    filename: env === 'development' ? '[name].js' : '[name].min.js',
+    library: '[name]',
     libraryTarget: 'umd',
+    path: path.resolve(__dirname, 'umd')
   },
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
       include: [
-        path.resolve(__dirname, 'src'),
+        path.resolve(__dirname, 'src')
       ],
       loader: 'babel-loader',
       query: {
