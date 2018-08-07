@@ -3771,9 +3771,9 @@ function-bind@^1.0.2, function-bind@^1.1.1, function-bind@~1.1.1:
   version "1.1.1"
   resolved "http://10.58.10.66:7001/function-bind/download/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
 
-g6-for-react@^0.1.0:
-  version "0.1.0"
-  resolved "http://10.58.10.66:7001/g6-for-react/download/g6-for-react-0.1.0.tgz#456cc028b4855c89530f9f7de5ce04f9258eccad"
+g6-for-react@^0.1.1:
+  version "0.1.1"
+  resolved "http://10.58.10.66:7001/g6-for-react/download/g6-for-react-0.1.1.tgz#a1f09c72838b11d054c5eec806c64c40fe97cd96"
   dependencies:
     "@antv/g6" "^2.0.4"
     invariant "^2.2.4"

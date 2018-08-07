@@ -3,3 +3,6 @@ node_modules
 *.log
 logs
 .VS_CODE
+es6
+lib
+umd

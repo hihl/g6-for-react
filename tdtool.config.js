@@ -63,7 +63,6 @@ if (isDebug) {
   clientConfig.add('plugin.copydll', new CopyWebpackPlugin([{ from: 'node_modules/td-react-vendor/dll', to: 'dll' }]));
 }
 clientConfig.add('output.publicPath', '/');
-clientConfig.add('plugin.copyg6', new CopyWebpackPlugin([{ from: 'node_modules/g6-for-react/umd', to: '../../public/scripts', force: true }]));
 
 const serverConfig = new Config({
   entry: './src/server/main',
@@ -73,5 +72,7 @@ const serverConfig = new Config({
   devServer: true,
   externals: [/^\.\/client\/assets\.json$/, require('webpack-node-externals')()],
 });
+
+serverConfig.add('plugin.copyg6', new CopyWebpackPlugin([{ from: 'node_modules/g6-for-react/umd', to: '../public/scripts', force: true }]));
 
 module.exports = [clientConfig.resolve(), serverConfig.resolve()];

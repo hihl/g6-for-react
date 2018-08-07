@@ -3,7 +3,7 @@ export default {
     "interaction-pan-node": {
       title: "交互-拖拽节点",
       code: `<script type="text/babel">
-  const { Graph } = window['g6-for-react'];
+  const { Graph } = window.ReactG6;
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -73,7 +73,7 @@ export default {
     "interaction-behaviour-mode": {
       title: "交互-模式与行为",
       code: `<script type="text/babel">
-  const { Graph, G6, NodeMapper, EdgeMapper } = window['g6-for-react'];
+  const { Graph, G6, NodeMapper, EdgeMapper } = window.ReactG6;
   // 注册鼠标进入节点变红的行为
   G6.registerBehaviour('mouseEnterFillRed', function(graph) {
     graph.behaviourOn('node:mouseenter', function(ev) {
@@ -168,7 +168,7 @@ export default {
     "custom-anchor": {
       title: "自定义-锚点",
       code: `<script type="text/babel">
-  const { Graph, G6, NodeMapper } = window['g6-for-react'];
+  const { Graph, G6, NodeMapper } = window.ReactG6;
   // 设置右边中点为连接锚点
   G6.registerNode('node2', {
     anchor: [
@@ -239,7 +239,7 @@ export default {
     "custom-draw": {
       title: "自定义-绘制",
       code: `<script type="text/babel">
-  const { Graph, G6 } = window['g6-for-react'];
+  const { Graph, G6 } = window.ReactG6;
   G6.registerNode('customNode', {
     draw: item => {
       const group = item.getGraphicGroup();
@@ -291,7 +291,7 @@ export default {
     "custom-enter-leave-animate": {
       title: "自定义-出入场动画",
       code: `<script type="text/babel">
-  const { Graph, G6 } = window['g6-for-react'];
+  const { Graph, G6 } = window.ReactG6;
   G6.registerNode('customNode', {
     // 自定义入场动画
     enterAnimate: function enterAnimate(item) {
@@ -356,7 +356,7 @@ export default {
     "custom-flowing-edge": {
       title: "自定义-流动效果线条",
       code: `<script type="text/babel">
-  const { Graph, G6, EdgeMapper } = window['g6-for-react'];
+  const { Graph, G6, EdgeMapper } = window.ReactG6;
   G6.registerEdge('flowingEdge', {
     afterDraw: function afterDraw(item) {
       var keyShape = item.getKeyShape();
@@ -409,7 +409,7 @@ export default {
     "custom-inherit": {
       title: "自定义-继承",
       code: `<script type="text/babel">
-  const { Graph, G6 } = window['g6-for-react'];
+  const { Graph, G6 } = window.ReactG6;
   G6.registerNode('rect', {
     draw: function draw(item) {
       var group = item.getGraphicGroup();
@@ -482,7 +482,7 @@ export default {
     "graph-animate": {
       title: "图-动画",
       code: `<script type="text/babel">
-  const { Graph } = window['g6-for-react'];
+  const { Graph } = window.ReactG6;
   class Demo extends React.Component {
     constructor(props) {
       super(props);
@@ -537,7 +537,7 @@ export default {
     "default-node": {
       title: "默认-边",
       code: `<script type="text/babel">
-  const { Graph } = window['g6-for-react'];
+  const { Graph } = window.ReactG6;
   class Demo extends React.Component {
     constructor(props) {
       super(props);
@@ -581,7 +581,7 @@ export default {
     "default-edge": {
       title: '默认-边',
       code: `<script type="text/babel">
-  const { Graph } = window['g6-for-react'];
+  const { Graph } = window.ReactG6;
   class Demo extends React.Component {
     constructor(props) {
       super(props);
@@ -664,7 +664,7 @@ export default {
     "default-group": {
       title: '默认-分组',
       code: `<script type="text/babel">
-  const { Graph } = window['g6-for-react'];
+  const { Graph } = window.ReactG6;
   class Demo extends React.Component {
     constructor(props) {
       super(props);
@@ -728,7 +728,7 @@ export default {
     "graph-change-size": {
       title: '图-更改画布尺寸',
       code: `<script type="text/babel">
-  const { Graph } = window['g6-for-react'];
+  const { Graph } = window.ReactG6;
   class Demo extends React.Component {
     constructor(props) {
       super(props);
@@ -779,7 +779,7 @@ export default {
     "graph-zIndex": {
       title: '图-调整图层',
       code: `<script type="text/babel">
-  const { Graph, NodeMapper } = window['g6-for-react'];
+  const { Graph, NodeMapper } = window.ReactG6;
   const nodes = [];
   const width = window.innerWidth;
   const height = window.innerHeight;
@@ -844,9 +844,9 @@ export default {
     },
     "layout-composite": {
       title: '布局-综合',
-      code: `<script src="https://unpkg.com/@antv/g6@2.0.4/build/plugins.js"></script>
+      code: `<script src="/scripts/plugins.min.js"></script>
 <script type="text/babel">
-  const { Graph, Layout, G6 } = window['g6-for-react'];
+  const { Graph, Layout, G6 } = window.ReactG6;
   const Util = G6.Util;
   const data = Util.createChainData(50);
   const setCol = 5;

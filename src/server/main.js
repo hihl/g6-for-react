@@ -22,7 +22,7 @@ function renderPreview(group, page) {
     <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
     <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
     <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
-    <script src="/scripts/g6-for-react.min.js"></script>
+    <script src="/scripts/ReactG6.min.js"></script>
   </head>
 <body>
 <div id="mountNode"></div>
