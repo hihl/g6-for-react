@@ -46,6 +46,11 @@ app.get('/', (req, res) => {
   res.send(renderView(Object.assign({}, config, assets), 'home'));
 });
 
+app.get('/demo/:group/:page', (req, res) => {
+  const { group, page } = req.params;
+  res.send(renderView(Object.assign({}, config, assets), 'demo'));
+});
+
 app.listen(port, () => {
   console.log(`The server is running at http://127.0.0.1:${port}/`);
 });

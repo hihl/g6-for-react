@@ -1952,6 +1952,10 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "http://10.58.10.66:7001/code-point-at/download/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
+codemirror@^5.39.2:
+  version "5.39.2"
+  resolved "http://10.58.10.66:7001/codemirror/download/codemirror-5.39.2.tgz#778aa13b55ebf280745c309cb1b148e3fc06f698"
+
 collection-visit@^1.0.0:
   version "1.0.0"
   resolved "http://10.58.10.66:7001/collection-visit/download/collection-visit-1.0.0.tgz#4bc0373c164bc3291b4d368c829cf1a80a59dca0"
@@ -2150,6 +2154,12 @@ copy-concurrently@^1.0.0:
 copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "http://10.58.10.66:7001/copy-descriptor/download/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
+
+copy-to-clipboard@^3:
+  version "3.0.8"
+  resolved "http://10.58.10.66:7001/copy-to-clipboard/download/copy-to-clipboard-3.0.8.tgz#f4e82f4a8830dce4666b7eb8ded0c9bcc313aba9"
+  dependencies:
+    toggle-selection "^1.0.3"
 
 copy-webpack-plugin@^4.2.3:
   version "4.5.2"
@@ -6585,11 +6595,26 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+re-resizable@^4.7.1:
+  version "4.7.1"
+  resolved "http://10.58.10.66:7001/re-resizable/download/re-resizable-4.7.1.tgz#3eca5bb94a6059d14311786cfd2d430bc9f7fba0"
+
 react-anything-sortable@^1.7.4:
   version "1.7.4"
   resolved "http://10.58.10.66:7001/react-anything-sortable/download/react-anything-sortable-1.7.4.tgz#c760cf67d7db226bb3943a7bda21c13614dce0cb"
   dependencies:
     create-react-class "^15.5.2"
+    prop-types "^15.5.8"
+
+react-codemirror2@^5.1.0:
+  version "5.1.0"
+  resolved "http://10.58.10.66:7001/react-codemirror2/download/react-codemirror2-5.1.0.tgz#62de4460178adea40eb52eabf7491669bf3794b8"
+
+react-copy-to-clipboard@^5.0.1:
+  version "5.0.1"
+  resolved "http://10.58.10.66:7001/react-copy-to-clipboard/download/react-copy-to-clipboard-5.0.1.tgz#8eae107bb400be73132ed3b6a7b4fb156090208e"
+  dependencies:
+    copy-to-clipboard "^3"
     prop-types "^15.5.8"
 
 react-deep-force-update@^1.0.0:
@@ -7933,6 +7958,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+toggle-selection@^1.0.3:
+  version "1.0.6"
+  resolved "http://10.58.10.66:7001/toggle-selection/download/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
 
 toposort@^1.0.0:
   version "1.0.7"

@@ -18,7 +18,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const clientConfig = new Config({
   entry: {
-    home: './src/home'
+    home: './src/home',
+    demo: './src/demo'
   },
   alias: {
     utils: path.resolve(process.cwd(), 'src/utils')
