@@ -63,6 +63,7 @@ if (isDebug) {
   clientConfig.add('plugin.copydll', new CopyWebpackPlugin([{ from: 'node_modules/td-react-vendor/dll', to: 'dll' }]));
 }
 clientConfig.add('output.publicPath', '/');
+clientConfig.add('plugin.copyg6', new CopyWebpackPlugin([{ from: 'node_modules/g6-for-react/umd', to: '../../public/scripts', force: true }]));
 
 const serverConfig = new Config({
   entry: './src/server/main',

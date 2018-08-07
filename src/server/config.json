@@ -87,7 +87,7 @@
       "display": "自定义-继承",
       "img": "custom-inherit.png"
     }, {
-      "key": "",
+      "key": "default-edge",
       "display": "默认-边",
       "img": "default-edge.png"
     }, {

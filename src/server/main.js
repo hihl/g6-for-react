@@ -5,9 +5,33 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import assets from './client/assets.json';
 import config from './config.json';
+import previews from './previews';
 
 const app = express();
 const port = process.env.port || 3005; // 默认端口
+
+function renderPreview(group, page) {
+  const preview = previews[group][page];
+  return `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>${preview.title}</title>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;margin:0;}</style>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react16.0.0.production.min.js"></script>
+    <script src="//g.alicdn.com/bizcharts/io-asserts/3.1.2/react-dom16.0.0.production.min.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="/scripts/g6-for-react.min.js"></script>
+  </head>
+<body>
+<div id="mountNode"></div>
+<script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
+${preview.code}
+</body>
+</html>
+  `;
+}
 
 function renderView(conf, page) {
   return `
@@ -24,6 +48,7 @@ function renderView(conf, page) {
       <script src="/dll/vendor2.js"></script>
       <script>
         window.groups = ${JSON.stringify(conf.groups)};
+        window.previewCode = "${encodeURIComponent(conf.previewCode)}";
       </script>
     </head>
     <body>
@@ -48,7 +73,7 @@ app.get('/', (req, res) => {
 
 app.get('/demo/:group/:page', (req, res) => {
   const { group, page } = req.params;
-  res.send(renderView(Object.assign({}, config, assets), 'demo'));
+  res.send(renderView(Object.assign({ previewCode: renderPreview(group, page) }, config, assets), 'demo'));
 });
 
 app.listen(port, () => {

@@ -18,7 +18,7 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       width: 800,
-      value: window.previewCode || ''
+      value: decodeURIComponent(window.previewCode) || ''
     };
   }
 
