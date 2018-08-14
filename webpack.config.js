@@ -8,8 +8,7 @@ const shelljs = require('shelljs');
 const env = process.env.NODE_ENV;
 
 const entry = {
-  ReactG6: './src/index.jsx',
-  G6Plugins: './src/plugins.js'
+  ReactG6: './src/index.jsx'
 };
 
 shelljs.ls(resolve(__dirname, 'plugins')).forEach(pluginPath => {
