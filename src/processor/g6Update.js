@@ -128,7 +128,7 @@ export default {
       !_.isEqual(treeProps.minZoom, nextTreeProps.minZoom) ||
       !_.isEqual(treeProps.maxZoom, nextTreeProps.maxZoom) ||
       !_.isEqual(treeProps.modes, nextTreeProps.modes) ||
-      !_.isEqual(graphProps.plugins, nextTreeProps.plugins) ||
+      !_.isEqual(treeProps.plugins, nextTreeProps.plugins) ||
       config.nodeMapper && !Util.shallowEqual(config.nodeMapper.props, config.nodeMapper.updateProps) ||
       config.edgeMapper && !Util.shallowEqual(config.edgeMapper.props, config.edgeMapper.updateProps) ||
       config.groupMapper && !Util.shallowEqual(config.groupMapper.props, config.groupMapper.updateProps)
