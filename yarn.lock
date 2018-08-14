@@ -3771,9 +3771,9 @@ function-bind@^1.0.2, function-bind@^1.1.1, function-bind@~1.1.1:
   version "1.1.1"
   resolved "http://10.58.10.66:7001/function-bind/download/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
 
-g6-for-react@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/g6-for-react/-/g6-for-react-0.1.2.tgz#02768892e9a1bea8cb40f693ab0fa582ddb3bcf3"
+g6-for-react@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/g6-for-react/-/g6-for-react-0.1.3.tgz#270359438fd8399895d28700c5c83e1131c743e7"
   dependencies:
     "@antv/g6" "^2.0.4"
     invariant "^2.2.4"

@@ -5889,7 +5889,7 @@ exports.default = {
     }
     var treeProps = config.tree.props;
     var nextTreeProps = config.tree.updateProps;
-    if (!(0, _isEqual3.default)(treeProps.fitViewPadding, nextTreeProps.fitViewPadding) || !(0, _isEqual3.default)(treeProps.minZoom, nextTreeProps.minZoom) || !(0, _isEqual3.default)(treeProps.maxZoom, nextTreeProps.maxZoom) || !(0, _isEqual3.default)(treeProps.modes, nextTreeProps.modes) || !(0, _isEqual3.default)(graphProps.plugins, nextTreeProps.plugins) || config.nodeMapper && !_shared.Util.shallowEqual(config.nodeMapper.props, config.nodeMapper.updateProps) || config.edgeMapper && !_shared.Util.shallowEqual(config.edgeMapper.props, config.edgeMapper.updateProps) || config.groupMapper && !_shared.Util.shallowEqual(config.groupMapper.props, config.groupMapper.updateProps)) {
+    if (!(0, _isEqual3.default)(treeProps.fitViewPadding, nextTreeProps.fitViewPadding) || !(0, _isEqual3.default)(treeProps.minZoom, nextTreeProps.minZoom) || !(0, _isEqual3.default)(treeProps.maxZoom, nextTreeProps.maxZoom) || !(0, _isEqual3.default)(treeProps.modes, nextTreeProps.modes) || !(0, _isEqual3.default)(treeProps.plugins, nextTreeProps.plugins) || config.nodeMapper && !_shared.Util.shallowEqual(config.nodeMapper.props, config.nodeMapper.updateProps) || config.edgeMapper && !_shared.Util.shallowEqual(config.edgeMapper.props, config.edgeMapper.updateProps) || config.groupMapper && !_shared.Util.shallowEqual(config.groupMapper.props, config.groupMapper.updateProps)) {
       return true;
     }
 
