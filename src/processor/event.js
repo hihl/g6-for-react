@@ -57,16 +57,21 @@ const graphEvents = graphEventNames.map(eventName => ({
 })).concat(baseEvents).concat(itemEvents);
 
 function bindEvents(graph, EVENTS = {}, props) {
-  _.each(EVENTS, (key) => {
+  _.each(EVENTS, function(key) {
     const { prop, event } = key;
     const fns = props[prop];
+    if (!graph._eventMaps) {
+      graph._eventMaps = {};
+    }
 
     if (Util.isFunction(fns)) {
-      graph.on(event, (...args) => fns(...args.concat([graph])));
+      graph._eventMaps[event] = (...args) => fns(...args.concat([graph]));
+      graph.on(event, graph._eventMaps[event]);
     } else if (Util.isObject(fns)) {
       for (const name in fns) {
         if (fns[name] !== undefined) {
-          graph.on(`${name}:${event}`, fns[name]);
+          graph._eventMaps[`${name}:${event}`] = fns[name];
+          graph.on(`${name}:${event}`, graph._eventMaps[event]);
         }
       }
     }
@@ -74,8 +79,13 @@ function bindEvents(graph, EVENTS = {}, props) {
 }
 
 function unbindEvents(graph, EVENTS = {}, props) {
-  _.each(EVENTS, (key) => {
+  _.each(EVENTS, function(key) {
     const { prop, event } = key;
+    if (graph._eventMaps) {
+      Object.keys(graph._eventMaps).forEach(e => {
+        graph.off(e, graph._eventMaps[e]);
+      });
+    }
     const fns = props[prop];
 
     if (Util.isFunction(fns)) {
@@ -91,25 +101,30 @@ function unbindEvents(graph, EVENTS = {}, props) {
 }
 
 function updateEvents(graph, EVENTS = {}, props, nextProps) {
-  _.each(EVENTS, (key) => {
+  _.each(EVENTS, function(key) {
     const { prop, event } = key;
     const fns = props[prop];
     const nextFns = nextProps[prop];
     let name;
+    if (!graph._eventMaps) {
+      graph._eventMaps = {};
+    }
 
     if (!Util.shallowEqual(fns, nextFns)) {
       if (Util.isFunction(fns) && Util.isFunction(nextFns)) {
-        graph.off(event, fns);
-        graph.on(event, nextFns);
+        graph.off(event, graph._eventMaps[event] || fns);
+        graph._eventMaps[event] = (...args) => nextFns(...args.concat([graph]));
+        graph.on(event, graph._eventMaps[event]);
       } else if (Util.isObject(fns) && Util.isObject(nextFns)) {
         for (name in fns) {
           if (Object.prototype.hasOwnProperty.call(fns, name)) {
-            graph.off(`${name}:${event}`, fns[name]);
+            graph.off(`${name}:${event}`, graph._eventMaps[`${name}:${event}`] || fns[name]);
           }
         }
         for (name in nextFns) {
           if (Object.prototype.hasOwnProperty.call(nextFns, name)) {
-            graph.on(`${name}:${event}`, nextFns[name]);
+            graph._eventMaps[`${name}:${event}`] = (...args) => Util.isFunction(nextFns[name]) ? nextFns[name](...args.concat([graph])) : () => {};
+            graph.on(`${name}:${event}`, graph._eventMaps[`${name}:${event}`]);
           }
         }
       }
