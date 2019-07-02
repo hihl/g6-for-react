@@ -7,7 +7,10 @@ class RootComponent extends React.Component {
     width: PropTypes.number,
     height: PropTypes.number,
     fitView: PropTypes.string,
-    fitViewPadding: PropTypes.string,
+    fitViewPadding: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.array
+    ]),
     animate: PropTypes.bool,
     minZoom: PropTypes.number,
     maxZoom: PropTypes.number,
